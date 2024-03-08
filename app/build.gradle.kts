@@ -64,5 +64,9 @@ dependencies {
     implementation (libs.jackson.annotations)
 
     implementation (libs.androidx.sqlite)
+
+    //com.google.android.material
+    implementation (libs.material.v150)
+
 }
 

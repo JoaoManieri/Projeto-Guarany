@@ -28,4 +28,68 @@ class EstoqueEmpresaDaoImpl(private val sqLiteHelper: SQLiteHelper) : EstoqueEmp
         Log.w("TAG", "getAllRegistros: $registros", )
         return registros
     }
+
+    @SuppressLint("Range")
+    override fun insert(estoqueEmpresa: EstoqueEmpresa): Long {
+        val db = sqLiteHelper.getInstance()
+        val sql = """
+        INSERT INTO GUA_ESTOQUEEMPRESA (
+            ESE_EMPRESA, 
+            ESE_CODIGO, 
+            ESE_ESTOQUE, 
+            ESE_LOCAL
+        ) VALUES (?, ?, ?, ?);
+    """.trimIndent()
+
+        val stmt = db.compileStatement(sql)
+        stmt.bindString(1, estoqueEmpresa.empresa)
+        stmt.bindString(2, estoqueEmpresa.codigo)
+        stmt.bindDouble(3, estoqueEmpresa.estoque)
+        stmt.bindString(4, estoqueEmpresa.local)
+
+        val result = stmt.executeInsert()
+        stmt.close()
+        db.close()
+
+        return result
+    }
+
+    @SuppressLint("Range")
+    override fun delete(codigoEmpresa: String): Int {
+        val db = sqLiteHelper.getInstance()
+        val sql = "DELETE FROM GUA_ESTOQUEEMPRESA WHERE ESE_CODIGO = ?"
+
+        val stmt = db.compileStatement(sql)
+        stmt.bindString(1, codigoEmpresa)
+
+        val result = stmt.executeUpdateDelete()
+        stmt.close()
+        db.close()
+
+        return result
+    }
+
+    @SuppressLint("Range")
+    override fun update(estoqueEmpresa: EstoqueEmpresa): Int {
+        val db = sqLiteHelper.getInstance()
+        val sql = """
+        UPDATE GUA_ESTOQUEEMPRESA
+        SET ESE_EMPRESA = ?, 
+            ESE_ESTOQUE = ?, 
+            ESE_LOCAL = ?
+        WHERE ESE_CODIGO = ?
+    """.trimIndent()
+
+        val stmt = db.compileStatement(sql)
+        stmt.bindString(1, estoqueEmpresa.empresa)
+        stmt.bindDouble(2, estoqueEmpresa.estoque)
+        stmt.bindString(3, estoqueEmpresa.local)
+        stmt.bindString(4, estoqueEmpresa.codigo)
+
+        val result = stmt.executeUpdateDelete()
+        stmt.close()
+        db.close()
+
+        return result
+    }
 }
