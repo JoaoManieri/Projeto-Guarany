@@ -24,7 +24,7 @@
 
     <style name="Theme.AppGuarany.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="AppTheme">
+    <style name="AppTheme"  parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="background">@color/background_day</item>
     </style>
 </resources>
