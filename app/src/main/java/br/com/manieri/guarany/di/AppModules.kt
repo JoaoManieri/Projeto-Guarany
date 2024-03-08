@@ -1,24 +1,15 @@
 package br.com.manieri.guarany.di
 
-import androidx.room.Room
-import br.com.manieri.guarany.data.AppDatabase
+import br.com.manieri.guarany.data.SQLiteHelper
 import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.dsl.module
 
-val appModule = module {
-    //single { get<AppDatabase>().yourDao() }
-    //viewModelOf()
-}
+//val appModule = module {
+//
+//}
 
 val provideAppDatabase = module {
     single {
-        Room.databaseBuilder(
-            androidContext(),
-            AppDatabase::class.java,
-            "bancomovel.db"
-        )
-            .createFromAsset("bancomovel.db")
-            .build()
+        SQLiteHelper(androidContext())
     }
 }

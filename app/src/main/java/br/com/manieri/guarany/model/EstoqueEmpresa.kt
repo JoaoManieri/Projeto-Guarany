@@ -3,11 +3,13 @@ package br.com.manieri.guarany.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import br.com.manieri.guarany.util.BigDecimalConverter
+import java.math.BigDecimal
 
-@Entity(tableName = "GUA_ESTOQUEEMPRESA", primaryKeys = ["ESE_EMPRESA", "ESE_CODIGO"])
 data class EstoqueEmpresa(
-    @ColumnInfo(name = "ESE_EMPRESA") val empresa: String,
-    @ColumnInfo(name = "ESE_CODIGO") val codigo: String,
-    @ColumnInfo(name = "ESE_ESTOQUE") val estoque: Double,
-    @ColumnInfo(name = "ESE_LOCAL") val local: String,
+   @PrimaryKey val empresa: String,
+   @PrimaryKey val codigo: String,
+   val estoque: Double,
+   @PrimaryKey val local: String,
 )

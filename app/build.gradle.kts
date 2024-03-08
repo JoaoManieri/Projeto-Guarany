@@ -61,4 +61,8 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     kapt (libs.androidx.room.compiler)
 
+    implementation (libs.jackson.annotations)
+
+    implementation (libs.androidx.sqlite)
 }
+

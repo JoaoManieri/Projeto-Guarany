@@ -1,20 +1,18 @@
 package br.com.manieri.guarany
 
 import android.os.Bundle
-import android.provider.Settings.Global
-import android.util.Log
 import android.view.Menu
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
-import br.com.manieri.guarany.data.AppDatabase
+import br.com.manieri.guarany.data.SQLiteHelper
 import br.com.manieri.guarany.databinding.ActivityMainBinding
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -24,18 +22,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     final val TAG = MainActivity::class.java.name
-    
-    suspend fun foo(){
-        val f = AppDatabase.getInstance(this).estoqueEmpresaDao().getAll()
-        Log.d(TAG, "foo: ${f.toString()}")
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        GlobalScope.launch { 
-            foo()
-        }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

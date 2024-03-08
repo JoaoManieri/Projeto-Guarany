@@ -1,7 +1,7 @@
 package br.com.manieri.guarany
 
 import android.app.Application
-import br.com.manieri.guarany.di.appModule
+import br.com.manieri.guarany.di.provideAppDatabase
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -12,7 +12,7 @@ class GuaranyApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@GuaranyApplication)
-            modules(appModule)
+            modules(provideAppDatabase)
         }
     }
 }

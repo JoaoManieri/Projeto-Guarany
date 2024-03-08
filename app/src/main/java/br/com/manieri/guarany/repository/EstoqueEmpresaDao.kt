@@ -8,21 +8,21 @@ import androidx.room.Query
 import androidx.room.Update
 import br.com.manieri.guarany.model.EstoqueEmpresa
 
-@Dao
+//@Dao
 interface EstoqueEmpresaDao {
-
-    @Query("SELECT * FROM GUA_ESTOQUEEMPRESA")
-    suspend fun getAll(): List<EstoqueEmpresa>
-
-    @Query("SELECT * FROM GUA_ESTOQUEEMPRESA WHERE ESE_EMPRESA = :empresa AND ESE_CODIGO = :codigo")
-    suspend fun findByEmpresaAndCodigo(empresa: String, codigo: String): EstoqueEmpresa?
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(estoqueEmpresa: EstoqueEmpresa)
-
-    @Update
-    suspend fun update(estoqueEmpresa: EstoqueEmpresa)
-
-    @Delete
-    suspend fun delete(estoqueEmpresa: EstoqueEmpresa)
+//
+//    @Query("SELECT * FROM GUA_ESTOQUEEMPRESA")
+//    suspend fun getAll(): List<EstoqueEmpresa>
+//
+//    @Query("SELECT * FROM GUA_ESTOQUEEMPRESA WHERE ESE_EMPRESA = :empresa AND ESE_CODIGO = :codigo")
+//    suspend fun findByEmpresaAndCodigo(empresa: String, codigo: String): EstoqueEmpresa?
+//
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//    suspend fun insert(estoqueEmpresa: EstoqueEmpresa)
+//
+//    @Update
+//    suspend fun update(estoqueEmpresa: EstoqueEmpresa)
+//
+//    @Delete
+//    suspend fun delete(estoqueEmpresa: EstoqueEmpresa)
 }
