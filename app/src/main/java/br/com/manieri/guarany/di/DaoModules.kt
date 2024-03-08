@@ -6,9 +6,6 @@ import br.com.manieri.guarany.repository.impl.EstoqueEmpresaDaoImpl
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
-
-val provideAppDatabase = module {
-    single {
-        SQLiteHelper(androidContext())
-    }
+val provideDao = module {
+    single<EstoqueEmpresaDao> { EstoqueEmpresaDaoImpl(get()) }
 }

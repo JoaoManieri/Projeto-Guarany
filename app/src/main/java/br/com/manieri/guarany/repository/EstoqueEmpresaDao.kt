@@ -10,19 +10,10 @@ import br.com.manieri.guarany.model.EstoqueEmpresa
 
 //@Dao
 interface EstoqueEmpresaDao {
+    fun getAll(): List<EstoqueEmpresa>
+//    fun getById(id: Long): EstoqueEmpresa?
+//    fun insert(estoqueEmpresa: EstoqueEmpresa): Long
+//    fun update(estoqueEmpresa: EstoqueEmpresa): Int
+//    fun delete(estoqueEmpresa: EstoqueEmpresa): Int
 //
-//    @Query("SELECT * FROM GUA_ESTOQUEEMPRESA")
-//    suspend fun getAll(): List<EstoqueEmpresa>
-//
-//    @Query("SELECT * FROM GUA_ESTOQUEEMPRESA WHERE ESE_EMPRESA = :empresa AND ESE_CODIGO = :codigo")
-//    suspend fun findByEmpresaAndCodigo(empresa: String, codigo: String): EstoqueEmpresa?
-//
-//    @Insert(onConflict = OnConflictStrategy.REPLACE)
-//    suspend fun insert(estoqueEmpresa: EstoqueEmpresa)
-//
-//    @Update
-//    suspend fun update(estoqueEmpresa: EstoqueEmpresa)
-//
-//    @Delete
-//    suspend fun delete(estoqueEmpresa: EstoqueEmpresa)
 }

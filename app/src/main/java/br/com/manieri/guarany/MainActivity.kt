@@ -11,10 +11,12 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import br.com.manieri.guarany.data.SQLiteHelper
 import br.com.manieri.guarany.databinding.ActivityMainBinding
+import br.com.manieri.guarany.repository.EstoqueEmpresaDao
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +27,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val estoqueEmpresaDao : EstoqueEmpresaDao by inject()
+
+        GlobalScope.launch {
+            estoqueEmpresaDao.getAll()
+        }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
