@@ -1,6 +1,5 @@
 package br.com.manieri.guarany.ui.home
 
-
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,16 +9,25 @@ import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-
-class ClienteViewModel : ViewModel(), KoinComponent {
+class ClienteViewModel(
+    private var listClientes: MutableList<ClienteListView> = mutableListOf()
+) : ViewModel(), KoinComponent {
     private val repositoryCliente: RepositoryCliente by inject()
 
     val observerCliente = MutableLiveData<MutableList<ClienteListView>>()
 
     fun postClients() {
         viewModelScope.launch {
-            val listClient = repositoryCliente.getClientes()
-            observerCliente.postValue(listClient.toMutableList())
+            listClientes = repositoryCliente.getClientes().toMutableList()
+            observerCliente.postValue(listClientes)
         }
+    }
+
+    fun search(query: String) {
+        val fill = listClientes.filter {
+            it.cgccpf.contains(query, true) || it.razaoSocial.toString()
+                .contains(query) || it.nomeFantasia.toString().contains(query)
+        }
+        observerCliente.postValue(fill.toMutableList())
     }
 }

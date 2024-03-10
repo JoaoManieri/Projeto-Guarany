@@ -21,8 +21,8 @@ class ClienteDaoImpl(private val sqLiteHelper: SQLiteHelper) : ClienteDao {
             while (it.moveToNext()) {
                 val codigoCliente = it.getString(it.getColumnIndex("CLI_CODIGOCLIENTE"))
                 val razaoSocial = it.getString(it.getColumnIndex("CLI_RAZAOSOCIAL"))
-                val nomeFantasia = it.getString(it.getColumnIndex("CLI_CGCCPF"))
-                val cgccpf = it.getString(it.getColumnIndex("CLI_NOMEFANTASIA"))
+                val nomeFantasia = it.getString(it.getColumnIndex("CLI_NOMEFANTASIA"))
+                val cgccpf = it.getString(it.getColumnIndex("CLI_CGCCPF"))
                 val clienteListView =
                     ClienteListView(codigoCliente, razaoSocial, nomeFantasia, cgccpf)
                 registros.add(clienteListView)

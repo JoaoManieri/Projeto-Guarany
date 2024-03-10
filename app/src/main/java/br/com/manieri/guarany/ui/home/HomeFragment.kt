@@ -27,9 +27,14 @@ class HomeFragment : Fragment(), ClientFragmentView, KoinComponent {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        initializeRecyclerView(clienteViewModel)
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initializeRecyclerView(clienteViewModel)
+        initializeSearchView()
     }
 
     override fun onDestroyView() {
@@ -53,38 +58,16 @@ class HomeFragment : Fragment(), ClientFragmentView, KoinComponent {
         }
     }
 
-    override fun initializeSearchView(viewModel: ClienteViewModel) {
-
-
-
+    override fun initializeSearchView() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-
-
-                val choices = listOf(chois("P1", 2),chois("C1", 2),chois("D1", 2),  )
-                // Cria uma string de consulta
-                val query = "Appl"
-                // Usa o algoritmo ratio para encontrar a string mais similar à consulta
-
-                val filteredList = choices.filter {
-                    it.pessoa.contains(query, true) || it.idade.toString().contains(query)
-                }
-
-                // Imprime o resultado
-                Log.w("TAG", "onQueryTextChange: $filteredList", )
-                // Saída: ExtractedResult [string=Apple, score=80, index=0]
-
+                clienteViewModel.search(newText!!)
                 return true
             }
         })
     }
-
-    inner class chois(
-        val pessoa : String,
-        val idade : Int
-    )
 }

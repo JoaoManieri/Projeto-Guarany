@@ -59,7 +59,6 @@ dependencies {
     // Room para controle de dados locais
     implementation (libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
-    kapt (libs.androidx.room.compiler)
 
     implementation (libs.jackson.annotations)
 
@@ -67,6 +66,7 @@ dependencies {
 
     //com.google.android.material
     implementation (libs.material.v150)
+    
 
 }
 
