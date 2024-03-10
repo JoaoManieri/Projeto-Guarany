@@ -9,7 +9,8 @@ import br.com.manieri.guarany.repository.dto.ClienteListView
 
 class AdapterCliente(
     private val context: Context,
-    private val listCliente: MutableList<ClienteListView>
+    private val listCliente: MutableList<ClienteListView>,
+    private val itemClickListener: (code : String) -> Unit
 ) : RecyclerView.Adapter<AdapterCliente.ClienteViewHolder>() {
 
 
@@ -24,6 +25,10 @@ class AdapterCliente(
         holder.nomeFantasia.text = listCliente[position].nomeFantasia
         holder.razaoSocial.text = listCliente[position].razaoSocial
         holder.cnpj.text = listCliente[position].cgccpf
+
+        holder.itemView.setOnClickListener {
+            itemClickListener(listCliente[position].codigoCliente)
+        }
     }
 
 
