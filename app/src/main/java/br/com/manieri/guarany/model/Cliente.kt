@@ -4,8 +4,10 @@ import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonInclude
+import java.io.Serializable
 
-@Entity(tableName = "GUA_CLIENTES")
 data class Cliente(
     @PrimaryKey(autoGenerate = false)
     val codigoCliente: String,
@@ -116,4 +118,4 @@ data class Cliente(
 //    val cnae: String,
 //    val pedidoMinimoEntradaFutura: Double,
 //    val parcelaMinimaEntradaFutura: Double
-)
+) : Serializable
