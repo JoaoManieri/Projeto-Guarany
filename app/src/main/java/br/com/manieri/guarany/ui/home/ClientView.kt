@@ -1,8 +1,8 @@
 package br.com.manieri.guarany.ui.home
 
-import br.com.manieri.guarany.repository.dto.ClienteListView
+import br.com.manieri.guarany.ui.home.viewModel.ClienteViewModel
 
-interface ClientFragmentView {
+interface ClientView {
     fun initializeRecyclerView(viewModel: ClienteViewModel)
     fun initializeSearchView()
 }

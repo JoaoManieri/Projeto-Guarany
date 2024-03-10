@@ -1,6 +1,7 @@
 package br.com.manieri.guarany
 
 import android.app.Application
+import br.com.manieri.guarany.di.cliente
 import br.com.manieri.guarany.di.provideAppDatabase
 import br.com.manieri.guarany.di.provideDao
 import br.com.manieri.guarany.di.provideRepository
@@ -19,7 +20,8 @@ class GuaranyApplication : Application() {
                 provideAppDatabase,
                 provideDao,
                 provideViewModel,
-                provideRepository
+                provideRepository,
+                cliente
             )
         }
     }

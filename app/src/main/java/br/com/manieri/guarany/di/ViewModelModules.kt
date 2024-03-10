@@ -1,6 +1,6 @@
 package br.com.manieri.guarany.di
 
-import br.com.manieri.guarany.ui.home.ClienteViewModel
+import br.com.manieri.guarany.ui.home.viewModel.ClienteViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

@@ -1,7 +1,6 @@
 package br.com.manieri.guarany.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +10,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.manieri.guarany.R
 import br.com.manieri.guarany.databinding.FragmentHomeBinding
+import br.com.manieri.guarany.ui.home.adapter.AdapterCliente
+import br.com.manieri.guarany.ui.home.data.CliData
+import br.com.manieri.guarany.ui.home.viewModel.ClienteViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class HomeFragment : Fragment(), ClientFragmentView, KoinComponent {
+class HomeFragment : Fragment(), ClientView, KoinComponent {
 
     private val clienteViewModel: ClienteViewModel by viewModel()
     private var _binding: FragmentHomeBinding? = null

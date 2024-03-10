@@ -1,4 +1,4 @@
-package br.com.manieri.guarany.ui.home
+package br.com.manieri.guarany.ui.home.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

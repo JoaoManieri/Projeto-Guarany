@@ -33,7 +33,7 @@ class ClienteDaoImpl(private val sqLiteHelper: SQLiteHelper) : ClienteDao {
     }
 
     @SuppressLint("Range")
-    override fun getClienteById(codigoCliente: String): Cliente {
+    override fun getClienteByCode(codigoCliente: String): Cliente {
         val db = sqLiteHelper.getInstance()
 
         val sql = "SELECT * FROM GUA_CLIENTES WHERE CLI_CODIGOCLIENTE = ?"

@@ -1,10 +1,11 @@
-package br.com.manieri.guarany.ui.home
+package br.com.manieri.guarany.ui.home.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.manieri.guarany.repository.RepositoryCliente
 import br.com.manieri.guarany.repository.dto.ClienteListView
+import br.com.manieri.guarany.ui.home.data.CliData
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -13,6 +14,7 @@ class ClienteViewModel(
     private var listClientes: MutableList<ClienteListView> = mutableListOf()
 ) : ViewModel(), KoinComponent {
     private val repositoryCliente: RepositoryCliente by inject()
+    private val cliData: CliData by inject()
 
     val observerCliente = MutableLiveData<MutableList<ClienteListView>>()
 
@@ -30,4 +32,9 @@ class ClienteViewModel(
         }
         observerCliente.postValue(fill.toMutableList())
     }
+
+    fun getClienteDataByCode(code : String) {
+        cliData.cliente = repositoryCliente.getClienteByCode(code)
+    }
+
 }
