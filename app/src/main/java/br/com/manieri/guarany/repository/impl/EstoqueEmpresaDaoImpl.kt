@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.util.Log
 import br.com.manieri.guarany.data.SQLiteHelper
 import br.com.manieri.guarany.model.EstoqueEmpresa
-import br.com.manieri.guarany.repository.EstoqueEmpresaDao
+import br.com.manieri.guarany.repository.dao.EstoqueEmpresaDao
 
 class EstoqueEmpresaDaoImpl(private val sqLiteHelper: SQLiteHelper) : EstoqueEmpresaDao {
     @SuppressLint("Range")

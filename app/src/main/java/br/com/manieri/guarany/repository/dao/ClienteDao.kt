@@ -1,4 +1,4 @@
-package br.com.manieri.guarany.repository
+package br.com.manieri.guarany.repository.dao
 
 import br.com.manieri.guarany.model.Cliente
 import br.com.manieri.guarany.model.EstoqueEmpresa

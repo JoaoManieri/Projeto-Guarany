@@ -3,7 +3,7 @@ package br.com.manieri.guarany.repository.impl
 import android.annotation.SuppressLint
 import br.com.manieri.guarany.data.SQLiteHelper
 import br.com.manieri.guarany.model.Cliente
-import br.com.manieri.guarany.repository.ClienteDao
+import br.com.manieri.guarany.repository.dao.ClienteDao
 import br.com.manieri.guarany.repository.dto.ClienteListView
 
 class ClienteDaoImpl(private val sqLiteHelper: SQLiteHelper) : ClienteDao {
