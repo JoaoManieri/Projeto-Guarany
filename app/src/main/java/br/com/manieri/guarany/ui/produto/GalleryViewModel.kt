@@ -1,4 +1,4 @@
-package br.com.manieri.guarany.ui.gallery
+package br.com.manieri.guarany.ui.produto
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

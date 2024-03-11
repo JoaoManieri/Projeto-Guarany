@@ -1,11 +1,11 @@
-package br.com.manieri.guarany.ui.home.adapter
+package br.com.manieri.guarany.ui.cliente.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import br.com.manieri.guarany.ui.home.ClientDadosFragment
-import br.com.manieri.guarany.ui.home.ClienteEnderecoFragment
+import br.com.manieri.guarany.ui.cliente.ClientDadosFragment
+import br.com.manieri.guarany.ui.cliente.ClienteEnderecoFragment
 
 class ClientePagerAdapter(
     fragmentManager: FragmentManager,

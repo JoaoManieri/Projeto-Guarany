@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.home.ClienteEnderecoFragment">
+    tools:context=".ui.cliente.ClienteEnderecoFragment">
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -94,8 +94,6 @@
             android:id="@+id/bairro_editText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:digits="0123456789()- "
-            android:inputType="phone"
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -117,8 +115,6 @@
             android:id="@+id/cidade_editText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:digits="0123456789-"
-            android:inputType="number"
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 

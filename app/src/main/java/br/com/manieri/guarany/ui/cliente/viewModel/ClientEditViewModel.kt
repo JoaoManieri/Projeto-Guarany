@@ -1,4 +1,4 @@
-package br.com.manieri.guarany.ui.home.viewModel
+package br.com.manieri.guarany.ui.cliente.viewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

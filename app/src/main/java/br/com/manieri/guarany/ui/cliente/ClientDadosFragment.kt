@@ -1,16 +1,16 @@
-package br.com.manieri.guarany.ui.home
+package br.com.manieri.guarany.ui.cliente
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import br.com.manieri.guarany.databinding.FragmentFirstBinding
-import br.com.manieri.guarany.ui.home.configs.configCnpjCpf
-import br.com.manieri.guarany.ui.home.configs.configTelefone
-import br.com.manieri.guarany.ui.home.data.CliData
-import br.com.manieri.guarany.ui.home.viewModel.ClientEditViewModel
+import br.com.manieri.guarany.ui.cliente.configs.UpdateData
+import br.com.manieri.guarany.ui.cliente.configs.configCnpjCpf
+import br.com.manieri.guarany.ui.cliente.configs.configTelefone
+import br.com.manieri.guarany.ui.cliente.data.CliData
+import br.com.manieri.guarany.ui.cliente.viewModel.ClientEditViewModel
 import org.koin.android.ext.android.inject
 
 
@@ -19,6 +19,9 @@ class ClientDadosFragment : Fragment(){
     private var _binding: FragmentFirstBinding? = null
     private val binding get() = _binding!!
     private val cliData: CliData by inject()
+
+    val updateData = UpdateData()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,14 +35,22 @@ class ClientDadosFragment : Fragment(){
         configTextFields()
         insertData()
         editMode()
+        updateConfig()
+    }
+
+    private fun updateConfig() {
+        updateData.update(binding.razaoSocialEditText, "razaoSocial")
+        updateData.update(binding.nomeFantasiaEditText, "nomeFantasia")
+        updateData.update(binding.cnpjEditText, "cgccpf")
+        updateData.update(binding.telefoneEditText, "telefone")
     }
 
     private fun editMode() {
         ClientEditViewModel.editMode.observe(viewLifecycleOwner){
-            binding.razaoSocialTextField.isEnabled = true
-            binding.nomeFantasiaTextField.isEnabled = true
-            binding.telefoneTextField.isEnabled = true
-            binding.cnpjTextView.isEnabled = true
+            binding.razaoSocialTextField.isEnabled = it
+            binding.nomeFantasiaTextField.isEnabled = it
+            binding.telefoneTextField.isEnabled = it
+            binding.cnpjTextView.isEnabled = it
         }
     }
 
@@ -56,10 +67,7 @@ class ClientDadosFragment : Fragment(){
     }
 
     override fun onDestroyView() {
-        binding.razaoSocialTextField.isEnabled = false
-        binding.nomeFantasiaTextField.isEnabled = false
-        binding.telefoneTextField.isEnabled = false
-        binding.cnpjTextView.isEnabled = false
+        ClientEditViewModel.editMode.postValue(false)
         super.onDestroyView()
         _binding = null
     }

@@ -11,4 +11,5 @@
 
     <color name="background_night">#363636</color>
     <color name="background_day">#E6E6E6</color>
+    <color name="red">#FF1100</color>
 </resources>

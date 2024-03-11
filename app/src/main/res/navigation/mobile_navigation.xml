@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="br.com.manieri.guarany.ui.home.HomeFragment"
+        android:name="br.com.manieri.guarany.ui.cliente.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="br.com.manieri.guarany.ui.gallery.GalleryFragment"
+        android:name="br.com.manieri.guarany.ui.produto.GalleryFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
@@ -28,7 +28,11 @@
         tools:layout="@layout/fragment_slideshow" />
     <fragment
         android:id="@+id/editeClienteFragment"
-        android:name="br.com.manieri.guarany.ui.home.EditClienteFragment"
+        android:name="br.com.manieri.guarany.ui.cliente.EditClienteFragment"
         android:label="fragment_edite_cliente"
-        tools:layout="@layout/fragment_edit_cliente" />
+        tools:layout="@layout/fragment_edit_cliente" >
+        <action
+            android:id="@+id/action_editeClienteFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
 </navigation>

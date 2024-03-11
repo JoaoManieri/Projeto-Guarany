@@ -1,4 +1,4 @@
-package br.com.manieri.guarany.ui.home
+package br.com.manieri.guarany.ui.cliente
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,24 +7,24 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import br.com.manieri.guarany.R
 import br.com.manieri.guarany.databinding.FragmentEditClienteBinding
-import br.com.manieri.guarany.ui.home.adapter.ClientePagerAdapter
-import br.com.manieri.guarany.ui.home.viewModel.ClientEditViewModel
-import br.com.manieri.guarany.ui.home.viewModel.ClienteViewModel
+import br.com.manieri.guarany.ui.cliente.adapter.ClientePagerAdapter
+import br.com.manieri.guarany.ui.cliente.viewModel.ClientEditViewModel
+import br.com.manieri.guarany.ui.cliente.viewModel.ClienteViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.component.KoinComponent
-import java.text.FieldPosition
 
 
 class EditClienteFragment(private var code: String? = null) : Fragment(), KoinComponent {
 
     private val clienteViewModel: ClienteViewModel by viewModel()
-    private val clientEditViewModel: ClientEditViewModel by viewModel()
     private var _binding: FragmentEditClienteBinding? = null
-    private var buttonStatus = 0
+
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +42,6 @@ class EditClienteFragment(private var code: String? = null) : Fragment(), KoinCo
         return binding.root
     }
 
-    @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_edicao, menu)
         super.onCreateOptionsMenu(menu, inflater)
@@ -59,9 +58,17 @@ class EditClienteFragment(private var code: String? = null) : Fragment(), KoinCo
     }
 
     private fun habilitarEdicao() {
-        val nextSaveButton = binding.nextSaveButton
-        nextSaveButton.visibility = View.VISIBLE
+        binding.deletButton.visibility = View.VISIBLE
+        binding.nextSaveButton.visibility = View.VISIBLE
         ClientEditViewModel.editMode.postValue(true)
+
+        binding.deletButton.setOnClickListener {
+            clienteViewModel.observeDBOperation.observe(viewLifecycleOwner){
+                Toast.makeText(requireContext(), "Sucesso!", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_editeClienteFragment_to_nav_home)
+            }
+            clienteViewModel.delete()
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -72,9 +79,8 @@ class EditClienteFragment(private var code: String? = null) : Fragment(), KoinCo
 
     private fun getClienteData() = clienteViewModel.getClienteDataByCode(code.toString())
 
-
     private fun initializeViewPager() {
-        var viewPager: ViewPager2 = binding.viewPager
+        val viewPager: ViewPager2 = binding.viewPager
         val adapter = ClientePagerAdapter(childFragmentManager, lifecycle)
         viewPager.adapter = adapter
 
@@ -97,10 +103,18 @@ class EditClienteFragment(private var code: String? = null) : Fragment(), KoinCo
             }
         } else {
             binding.nextSaveButton.text = "salvar alterações"
+            binding.nextSaveButton.setOnClickListener {
+                clienteViewModel.observeDBOperation.observe(viewLifecycleOwner){
+                    Toast.makeText(requireContext(), "Sucesso!", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_editeClienteFragment_to_nav_home)
+                }
+                clienteViewModel.updateClient()
+            }
         }
     }
 
     override fun onDestroyView() {
+        ClientEditViewModel.editMode.postValue(false)
         super.onDestroyView()
         _binding = null
     }

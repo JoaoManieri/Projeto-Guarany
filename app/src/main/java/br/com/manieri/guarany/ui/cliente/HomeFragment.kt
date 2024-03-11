@@ -1,4 +1,4 @@
-package br.com.manieri.guarany.ui.home
+package br.com.manieri.guarany.ui.cliente
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.manieri.guarany.R
 import br.com.manieri.guarany.databinding.FragmentHomeBinding
-import br.com.manieri.guarany.ui.home.adapter.AdapterCliente
-import br.com.manieri.guarany.ui.home.viewModel.ClienteViewModel
+import br.com.manieri.guarany.ui.cliente.adapter.AdapterCliente
+import br.com.manieri.guarany.ui.cliente.viewModel.ClienteViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.component.KoinComponent
 
@@ -44,7 +44,7 @@ class HomeFragment : Fragment(), ClientView, KoinComponent {
     }
 
     override fun initializeRecyclerView(viewModel: ClienteViewModel) {
-        viewModel.postClients()
+        viewModel.clientFound()
         viewModel.observerCliente.observe(viewLifecycleOwner) {
             val recyclerViewCliente = binding.listaClientesRecyclerView
             recyclerViewCliente.layoutManager = LinearLayoutManager(requireContext())

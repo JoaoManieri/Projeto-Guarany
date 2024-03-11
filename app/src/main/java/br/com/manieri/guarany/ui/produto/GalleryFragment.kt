@@ -1,4 +1,4 @@
-package br.com.manieri.guarany.ui.gallery
+package br.com.manieri.guarany.ui.produto
 
 import android.os.Bundle
 import android.view.LayoutInflater

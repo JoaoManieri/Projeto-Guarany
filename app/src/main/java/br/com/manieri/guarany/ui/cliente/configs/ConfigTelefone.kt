@@ -1,4 +1,4 @@
-package br.com.manieri.guarany.ui.home.configs
+package br.com.manieri.guarany.ui.cliente.configs
 
 import android.text.Editable
 import android.text.TextWatcher

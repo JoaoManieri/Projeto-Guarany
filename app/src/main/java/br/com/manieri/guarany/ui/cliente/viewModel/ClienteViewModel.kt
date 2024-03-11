@@ -1,12 +1,11 @@
-package br.com.manieri.guarany.ui.home.viewModel
+package br.com.manieri.guarany.ui.cliente.viewModel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.manieri.guarany.repository.RepositoryCliente
 import br.com.manieri.guarany.repository.dto.ClienteListView
-import br.com.manieri.guarany.ui.home.data.CliData
+import br.com.manieri.guarany.ui.cliente.data.CliData
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -18,8 +17,9 @@ class ClienteViewModel(
     private val cliData: CliData by inject()
 
     val observerCliente = MutableLiveData<MutableList<ClienteListView>>()
+    val observeDBOperation = MutableLiveData<Int>()
 
-    fun postClients() {
+    fun clientFound() {
         viewModelScope.launch {
             listClientes = repositoryCliente.getClientes().toMutableList()
             observerCliente.postValue(listClientes)
@@ -37,6 +37,20 @@ class ClienteViewModel(
     fun getClienteDataByCode(code : String) {
         viewModelScope.launch {
             cliData.cliente = repositoryCliente.getClienteByCode(code)
+        }
+    }
+
+    fun updateClient(){
+        viewModelScope.launch {
+            val i = repositoryCliente.updateCliente(cliData.cliente)
+            observeDBOperation.postValue(i)
+        }
+    }
+
+    fun delete() {
+        viewModelScope.launch {
+            val i = repositoryCliente.deleteCliente(cliData.cliente.codigoCliente)
+            observeDBOperation.postValue(i)
         }
     }
 

@@ -1,7 +1,6 @@
-package br.com.manieri.guarany.ui.home.data
+package br.com.manieri.guarany.ui.cliente.data
 
 import br.com.manieri.guarany.model.Cliente
-import org.koin.java.KoinJavaComponent.inject
 
 class CliData {
     var cliente: Cliente = Cliente()
