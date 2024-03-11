@@ -27,4 +27,13 @@
     <style name="AppTheme"  parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="background">@color/background_day</item>
     </style>
+
+    <style name="Outlined" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/purple_500</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="backgroundColor">@color/white</item>
+
+        <!-- Outras personalizações -->
+    </style>
+
 </resources>

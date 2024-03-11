@@ -39,13 +39,11 @@ class EditClienteFragment(private var code: String? = null) : Fragment(), KoinCo
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initializeViewPager()
         getClienteData()
+        initializeViewPager()
     }
 
-    private fun getClienteData() {
-        clienteViewModel.getClienteDataByCode(code.toString())
-    }
+    private fun getClienteData() = clienteViewModel.getClienteDataByCode(code.toString())
 
 
     private fun initializeViewPager() {

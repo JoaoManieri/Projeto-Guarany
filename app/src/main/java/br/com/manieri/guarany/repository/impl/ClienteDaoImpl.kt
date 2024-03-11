@@ -44,19 +44,19 @@ class ClienteDaoImpl(private val sqLiteHelper: SQLiteHelper) : ClienteDao {
         var cliente: Cliente? = null
         if (cursor.moveToFirst()) {
             cliente = Cliente(
-                cursor.getString(cursor.getColumnIndex("CLI_CODIGOCLIENTE")),
-                cursor.getString(cursor.getColumnIndex("CLI_RAZAOSOCIAL")),
-                cursor.getString(cursor.getColumnIndex("CLI_CGCCPF")),
-                cursor.getString(cursor.getColumnIndex("CLI_ENDERECO")),
-                cursor.getString(cursor.getColumnIndex("CLI_NUMERO")),
-                cursor.getString(cursor.getColumnIndex("CLI_COMPLEMENTO")),
-                cursor.getString(cursor.getColumnIndex("CLI_BAIRRO")),
-                cursor.getString(cursor.getColumnIndex("CLI_CODIGOMUNICIPIO")),
-                cursor.getString(cursor.getColumnIndex("CLI_TELEFONE")),
-                cursor.getString(cursor.getColumnIndex("CLI_CEP")),
-                cursor.getString(cursor.getColumnIndex("CLI_STATUS")),
-                cursor.getString(cursor.getColumnIndex("CLI_NOMEFANTASIA")),
-                cursor.getString(cursor.getColumnIndex("CLI_DATACADASTRO")),
+                cursor.getString(cursor.getColumnIndex("CLI_CODIGOCLIENTE")) ?: "",
+                cursor.getString(cursor.getColumnIndex("CLI_RAZAOSOCIAL")) ?: "",
+                cursor.getString(cursor.getColumnIndex("CLI_CGCCPF")) ?: "",
+                cursor.getString(cursor.getColumnIndex("CLI_ENDERECO")) ?: "",
+                cursor.getString(cursor.getColumnIndex("CLI_NUMERO")) ?: "",
+                cursor.getString(cursor.getColumnIndex("CLI_COMPLEMENTO")) ?: "",
+                cursor.getString(cursor.getColumnIndex("CLI_BAIRRO")) ?: "",
+                cursor.getString(cursor.getColumnIndex("CLI_CODIGOMUNICIPIO")) ?: "",
+                cursor.getString(cursor.getColumnIndex("CLI_TELEFONE")) ?: "",
+                cursor.getString(cursor.getColumnIndex("CLI_CEP")) ?: "",
+                cursor.getString(cursor.getColumnIndex("CLI_STATUS")) ?: "",
+                cursor.getString(cursor.getColumnIndex("CLI_NOMEFANTASIA")) ?: "",
+                cursor.getString(cursor.getColumnIndex("CLI_DATACADASTRO")) ?: "",
             )
         }
         cursor.close()

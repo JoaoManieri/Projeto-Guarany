@@ -1,5 +1,6 @@
 package br.com.manieri.guarany.ui.home.viewModel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -34,7 +35,11 @@ class ClienteViewModel(
     }
 
     fun getClienteDataByCode(code : String) {
-        cliData.cliente = repositoryCliente.getClienteByCode(code)
+        viewModelScope.launch {
+            Log.w("TAG", "getClienteDataByCode: Passou aqui claro que sim ",)
+            cliData.cliente = repositoryCliente.getClienteByCode(code)
+            Log.w("TAG", "getClienteDataByCode: Passou aqui claro que sim ${cliData.cliente}",)
+        }
     }
 
 }
