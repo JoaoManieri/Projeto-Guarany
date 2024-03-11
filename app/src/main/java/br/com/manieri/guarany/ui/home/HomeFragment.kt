@@ -11,11 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.manieri.guarany.R
 import br.com.manieri.guarany.databinding.FragmentHomeBinding
 import br.com.manieri.guarany.ui.home.adapter.AdapterCliente
-import br.com.manieri.guarany.ui.home.data.CliData
 import br.com.manieri.guarany.ui.home.viewModel.ClienteViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
 class HomeFragment : Fragment(), ClientView, KoinComponent {
 
@@ -55,7 +53,7 @@ class HomeFragment : Fragment(), ClientView, KoinComponent {
                 val bundle = Bundle().apply {
                     putSerializable("code", it)
                 }
-                findNavController().navigate(R.id.action_nav_home_to_editeClienteFragment,bundle)
+                findNavController().navigate(R.id.action_nav_home_to_editeClienteFragment, bundle)
             }
             recyclerViewCliente.adapter = adapterCliente
         }

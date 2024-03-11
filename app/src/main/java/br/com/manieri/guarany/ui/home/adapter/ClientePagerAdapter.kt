@@ -7,7 +7,11 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import br.com.manieri.guarany.ui.home.ClientDadosFragment
 import br.com.manieri.guarany.ui.home.ClienteEnderecoFragment
 
-class ClientePagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager,lifecycle) {
+class ClientePagerAdapter(
+    fragmentManager: FragmentManager,
+    lifecycle: Lifecycle
+) : FragmentStateAdapter(fragmentManager,lifecycle) {
+
 
     override fun getItemCount(): Int {
         return 2
@@ -20,5 +24,4 @@ class ClientePagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle
             ClienteEnderecoFragment()
         }
     }
-
 }

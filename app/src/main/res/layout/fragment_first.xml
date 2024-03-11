@@ -10,19 +10,22 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/razao_social_textField"
+        style="@style/Outlined"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        style="@style/Outlined"
+        android:enabled="false"
         android:hint="Razão social"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:background="@color/white"
+            android:id="@+id/razao_social_editText"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:textColor="@color/black"
+             />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -32,14 +35,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="Nome fantasia"
+        android:enabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/razao_social_textField">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:background="@color/white"
+            android:textColor="@color/black"
+            android:id="@+id/nome_fantasia_editText"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+          />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -48,6 +54,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:enabled="false"
         android:hint="CPF / CNPJ"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,12 +63,12 @@
         app:layout_constraintVertical_bias="0.0">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:background="@color/white"
             android:id="@+id/cnpj_editText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="number"
-            android:digits="0123456789-/. " />
+            android:textColor="@color/black"
+            android:digits="0123456789-/. "
+            android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -70,23 +77,20 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:enabled="false"
         android:hint="Telefone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cnpj_textView">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:background="@color/white"
             android:id="@+id/telefone_editText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="phone"
-            android:digits="0123456789()- " />
+            android:textColor="@color/black"
+            android:digits="0123456789()- "
+            android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

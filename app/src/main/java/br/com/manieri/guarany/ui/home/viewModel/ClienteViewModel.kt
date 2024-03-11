@@ -36,9 +36,7 @@ class ClienteViewModel(
 
     fun getClienteDataByCode(code : String) {
         viewModelScope.launch {
-            Log.w("TAG", "getClienteDataByCode: Passou aqui claro que sim ",)
             cliData.cliente = repositoryCliente.getClienteByCode(code)
-            Log.w("TAG", "getClienteDataByCode: Passou aqui claro que sim ${cliData.cliente}",)
         }
     }
 
