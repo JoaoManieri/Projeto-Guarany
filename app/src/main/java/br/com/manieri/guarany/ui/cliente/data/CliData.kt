@@ -4,4 +4,8 @@ import br.com.manieri.guarany.model.Cliente
 
 class CliData {
     var cliente: Cliente = Cliente()
+
+    fun clear(){
+        this.cliente = Cliente()
+    }
 }

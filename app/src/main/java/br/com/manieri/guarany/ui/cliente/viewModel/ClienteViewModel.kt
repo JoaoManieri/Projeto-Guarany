@@ -47,6 +47,13 @@ class ClienteViewModel(
         }
     }
 
+    fun insert(){
+        viewModelScope.launch {
+            val i = repositoryCliente.insert(cliData.cliente)
+            observeDBOperation.postValue(i.toInt())
+        }
+    }
+
     fun delete() {
         viewModelScope.launch {
             val i = repositoryCliente.deleteCliente(cliData.cliente.codigoCliente)

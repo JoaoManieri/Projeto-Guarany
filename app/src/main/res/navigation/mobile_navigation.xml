@@ -3,21 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_clientes">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="br.com.manieri.guarany.ui.cliente.HomeFragment"
+        android:id="@+id/nav_clientes"
+        android:name="br.com.manieri.guarany.ui.cliente.ClienteFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_nav_home_to_editeClienteFragment"
+            android:id="@+id/action_nav_clientes_to_editeClienteFragment"
             app:destination="@id/editeClienteFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="br.com.manieri.guarany.ui.produto.GalleryFragment"
+        android:id="@+id/nav_produtos"
+        android:name="br.com.manieri.guarany.ui.produto.ProdutosFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
@@ -32,7 +32,7 @@
         android:label="fragment_edite_cliente"
         tools:layout="@layout/fragment_edit_cliente" >
         <action
-            android:id="@+id/action_editeClienteFragment_to_nav_home"
-            app:destination="@id/nav_home" />
+            android:id="@+id/action_editeClienteFragment_to_nav_clientes"
+            app:destination="@id/nav_clientes" />
     </fragment>
 </navigation>

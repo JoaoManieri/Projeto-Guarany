@@ -16,6 +16,7 @@ import br.com.manieri.guarany.databinding.FragmentEditClienteBinding
 import br.com.manieri.guarany.ui.cliente.adapter.ClientePagerAdapter
 import br.com.manieri.guarany.ui.cliente.viewModel.ClientEditViewModel
 import br.com.manieri.guarany.ui.cliente.viewModel.ClienteViewModel
+import br.com.manieri.guarany.util.NOVO_CLIENTE
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.component.KoinComponent
 
@@ -43,8 +44,12 @@ class EditClienteFragment(private var code: String? = null) : Fragment(), KoinCo
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_edicao, menu)
-        super.onCreateOptionsMenu(menu, inflater)
+        if (code != NOVO_CLIENTE) {
+            inflater.inflate(R.menu.menu_edicao, menu)
+            super.onCreateOptionsMenu(menu, inflater)
+        } else {
+            habilitarEdicao()
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -53,27 +58,39 @@ class EditClienteFragment(private var code: String? = null) : Fragment(), KoinCo
                 habilitarEdicao()
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
 
     private fun habilitarEdicao() {
+
         binding.deletButton.visibility = View.VISIBLE
         binding.nextSaveButton.visibility = View.VISIBLE
+
         ClientEditViewModel.editMode.postValue(true)
 
-        binding.deletButton.setOnClickListener {
-            clienteViewModel.observeDBOperation.observe(viewLifecycleOwner){
-                Toast.makeText(requireContext(), "Sucesso!", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.action_editeClienteFragment_to_nav_home)
+        if (code == NOVO_CLIENTE) {
+            binding.deletButton.text = "Calcelar"
+            binding.deletButton.setOnClickListener {
+                findNavController().navigate(R.id.action_editeClienteFragment_to_nav_clientes)
             }
-            clienteViewModel.delete()
+        } else {
+            binding.deletButton.setOnClickListener {
+                clienteViewModel.observeDBOperation.observe(viewLifecycleOwner) {
+                    Toast.makeText(requireContext(), "Sucesso!", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_editeClienteFragment_to_nav_clientes)
+                }
+                clienteViewModel.delete()
+            }
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getClienteData()
+        if (code != NOVO_CLIENTE) {
+            getClienteData()
+        }
         initializeViewPager()
     }
 
@@ -91,8 +108,8 @@ class EditClienteFragment(private var code: String? = null) : Fragment(), KoinCo
         })
     }
 
-    fun setButtonStatus(position : Int){
-        if (position == 0 ){
+    fun setButtonStatus(position: Int) {
+        if (position == 0) {
             binding.nextSaveButton.text = "proximo ->"
             binding.nextSaveButton.setOnClickListener {
                 val viewPager = binding.viewPager
@@ -102,13 +119,24 @@ class EditClienteFragment(private var code: String? = null) : Fragment(), KoinCo
                 }
             }
         } else {
-            binding.nextSaveButton.text = "salvar alterações"
-            binding.nextSaveButton.setOnClickListener {
-                clienteViewModel.observeDBOperation.observe(viewLifecycleOwner){
-                    Toast.makeText(requireContext(), "Sucesso!", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.action_editeClienteFragment_to_nav_home)
+            if (code == NOVO_CLIENTE) {
+                binding.nextSaveButton.text = "criar novo cliente"
+                binding.nextSaveButton.setOnClickListener {
+                    clienteViewModel.observeDBOperation.observe(viewLifecycleOwner) {
+                        Toast.makeText(requireContext(), "Sucesso!", Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(R.id.action_editeClienteFragment_to_nav_clientes)
+                    }
+                    clienteViewModel.insert()
                 }
-                clienteViewModel.updateClient()
+            } else {
+                binding.nextSaveButton.text = "salvar alterações"
+                binding.nextSaveButton.setOnClickListener {
+                    clienteViewModel.observeDBOperation.observe(viewLifecycleOwner) {
+                        Toast.makeText(requireContext(), "Sucesso!", Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(R.id.action_editeClienteFragment_to_nav_clientes)
+                    }
+                    clienteViewModel.updateClient()
+                }
             }
         }
     }

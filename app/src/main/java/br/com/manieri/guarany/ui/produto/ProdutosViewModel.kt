@@ -1,13 +1,13 @@
-package br.com.manieri.guarany.ui.slideshow
+package br.com.manieri.guarany.ui.produto
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SlideshowViewModel : ViewModel() {
+class ProdutosViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is slideshow Fragment"
+        value = "Produtos em construção..."
     }
     val text: LiveData<String> = _text
 }
