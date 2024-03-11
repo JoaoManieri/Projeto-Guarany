@@ -19,7 +19,6 @@ class ClientDadosFragment : Fragment(){
     private var _binding: FragmentFirstBinding? = null
     private val binding get() = _binding!!
     private val cliData: CliData by inject()
-    private val clientEditViewModel: ClientEditViewModel by inject()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

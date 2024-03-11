@@ -13,7 +13,9 @@
         style="@style/Outlined"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
         android:enabled="false"
         android:hint="Razão social"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,8 +26,7 @@
             android:id="@+id/razao_social_editText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColor="@color/black"
-             />
+            android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -33,19 +34,20 @@
         style="@style/Outlined"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
-        android:hint="Nome fantasia"
+        android:layout_marginEnd="4dp"
         android:enabled="false"
+        android:hint="Nome fantasia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/razao_social_textField">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:textColor="@color/black"
             android:id="@+id/nome_fantasia_editText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-          />
+            android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -53,7 +55,9 @@
         style="@style/Outlined"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
         android:enabled="false"
         android:hint="CPF / CNPJ"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -66,9 +70,9 @@
             android:id="@+id/cnpj_editText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColor="@color/black"
             android:digits="0123456789-/. "
-            android:inputType="number" />
+            android:inputType="number"
+            android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -76,7 +80,9 @@
         style="@style/Outlined"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
         android:enabled="false"
         android:hint="Telefone"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,9 +93,9 @@
             android:id="@+id/telefone_editText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColor="@color/black"
             android:digits="0123456789()- "
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
