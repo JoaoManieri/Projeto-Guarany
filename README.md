@@ -2,6 +2,7 @@
 
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/licenses/MIT) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Android 14](https://img.shields.io/badge/Android-14-green.svg)](https://developer.android.com/about/versions/14) [![Kotlin](https://img.shields.io/badge/Kotlin-null-purple.svg)](https://kotlinlang.org/)
 
+
 ## Funcionalidades:
 
 - Gerenciamento completo de clientes:
@@ -38,6 +39,7 @@
 2. Requisitos Funcionais Pendentes:
    Alguns requisitos funcionais não foram finalizados devido à restrição de tempo.
 
+### USE O APP EM MODO CLARO!
 3. Modo Escuro:
    O aplicativo foi desenvolvido para funcionar em modo claro, mas a ideia inicial era ter um modo escuro e um modo claro para compatibilidade com o tema do Android. No entanto, os requisitos funcionais foram priorizados nesta fase do projeto.
 
